@@ -6,12 +6,14 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rb;
+    private Animator _animator;
     public float movementSpeed = 5f;
     public float rotationSpeed = 15f;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -21,9 +23,10 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movementDirection = new Vector3 (horizontal, 0, vertical);
 
+        _animator.SetBool("IsRunning",movementDirection != Vector3.zero);
+
         if(movementDirection == Vector3.zero )
         {
-            Debug.Log("DUUUUUR");
             return;
         }
 
