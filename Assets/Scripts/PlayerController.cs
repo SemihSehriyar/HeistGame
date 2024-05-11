@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
         if(movementDirection == Vector3.zero )
         {
+            _rb.velocity = Vector3.zero;
             return;
         }
 
